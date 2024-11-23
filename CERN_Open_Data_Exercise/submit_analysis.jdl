@@ -1,0 +1,22 @@
+executable = run_analysis.sh
+
+# use_oauth_services = helmholtz
+
+output = logs/$(cluster).$(process).out
+error = logs/$(cluster).$(process).err
+log = logs/cluster.log
+
+ShouldTransferFiles = YES
+WhenToTransferOutput = ON_SUCCESS
+
+transfer_input_files = dimuonSpectrum2012_eospublic.C
+transfer_output_files = dimuonSpectrum2012_C_eospublic.pdf
+
+# output_destination = helmholtz+https://dcache-kit.gridka.de:2880/pnfs/gridka.de/punch4nfdi/Tutorial-Bonn/your_user_name
+
+request_cpus = 8
+request_memory = 20000
+
++SINGULARITY_JOB_CONTAINER = "wlcg-wn:latest"
+
+queue 1
